@@ -1,0 +1,18 @@
+---
+- name : Shubham
+  hosts : localhost
+  become : yes
+  tasks :
+    - name : Installing httpd
+      yum :
+        name : httpd
+        state : latest
+
+    - name : Creating file
+      command : echo "Hello Shubham Stay +ve" >/home/ec2-user/index.html
+
+    - name : Copy_html 
+      copy :
+        src : index.html
+        dest : /var/www/index/index.html
+        mode : "777"
